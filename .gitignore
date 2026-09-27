@@ -5,6 +5,7 @@ build/
 dist/
 wheels/
 *.egg-info
+*.zip
 uv.lock
 .python-version
 pyproject.toml
