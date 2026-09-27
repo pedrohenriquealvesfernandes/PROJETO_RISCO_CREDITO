@@ -5,6 +5,9 @@ build/
 dist/
 wheels/
 *.egg-info
+uv.lock
+.python-version
+py.project.toml
 
 # Virtual environments
 .venv
