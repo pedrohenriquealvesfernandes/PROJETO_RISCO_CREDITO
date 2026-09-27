@@ -7,7 +7,7 @@ wheels/
 *.egg-info
 uv.lock
 .python-version
-py.project.toml
+pyproject.toml
 
 # Virtual environments
 .venv
