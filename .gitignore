@@ -5,10 +5,18 @@ build/
 dist/
 wheels/
 *.egg-info
-*.zip
+src/bronze/__pycache__
+src/projeto_risco_credito
+
+#Arquivos de config
 uv.lock
 .python-version
 pyproject.toml
+.gitattributes
+
+# Arquivos raw
+*.zip
+data/bronze/arquivos_extraidos/*.csv
 
 # Virtual environments
 .venv
