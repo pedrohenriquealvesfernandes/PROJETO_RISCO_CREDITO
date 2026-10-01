@@ -7,6 +7,8 @@ wheels/
 *.egg-info
 src/bronze/__pycache__
 src/projeto_risco_credito
+src/gold/dados_limpos/*.csv
+src/gold/dados_limpos/*.rar
 
 #Arquivos de config
 uv.lock
