@@ -1,10 +1,4 @@
-CREATE DATABASE RiscoCredito;
-GO
-
-USE RiscoCredito;
-GO
-
--- Criação da tabela para inserir os dados exportados
+exec dbo.sp_inserir_dados
 
 IF OBJECT_ID('scr_risco_credito', 'U') IS NOT NULL
 	DROP TABLE scr_risco_credito;
@@ -14,15 +8,15 @@ CREATE TABLE scr_risco_credito
 (
 	data_base DATE,
 	uf NVARCHAR(2),
-	segmento NVARCHAR(40),
+	segmento NVARCHAR(100),
 	cliente NVARCHAR(2),
-	cnae_ocupacao NVARCHAR(70),
-	porte NVARCHAR(50),
-	modalidade NVARCHAR(70),
-	submodalidade NVARCHAR(100),
-	origem NVARCHAR(30),
-	indexador NVARCHAR(30),
-	numero_de_operacoes INT,
+	cnae_ocupacao NVARCHAR(100),
+	porte NVARCHAR(100),
+	modalidade NVARCHAR(100),
+	submodalidade NVARCHAR(160),
+	origem NVARCHAR(160),
+	indexador NVARCHAR(100),
+	numero_de_operacoes NVARCHAR(20),
 	a_vencer_ate_90_dias DECIMAL(16,2),
 	a_vencer_de_91_ate_360_dias DECIMAL(16,2),
 	a_vencer_de_361_ate_1080_dias DECIMAL(16,2),
@@ -38,8 +32,6 @@ CREATE TABLE scr_risco_credito
 	ativo_problematico DECIMAL(16,2),
 )
 
--- Criação da procedure para importação dos dados
-
 CREATE OR ALTER PROCEDURE sp_inserir_dados AS
 BEGIN
 	DECLARE @tempo_inicio DATETIME, @tempo_final DATETIME;
@@ -47,16 +39,17 @@ BEGIN
 		SET @tempo_inicio = GETDATE();
 
 		TRUNCATE TABLE scr_risco_credito;
-		BULK INSERT scr_risco_credito
-		FROM 'C:\Users\Pedro\Desktop\ESTUDOS\ANALISE_DADOS\PROJETOS\PROJETO_RISCO_CREDITO\data\gold\dados_limpos.csv'
-		WITH  (
-			FIELDTERMINATOR = ';',
-			ROWTERMINATOR = '0x0a',
-			CODEPAGE = '65001',
-			FIRSTROW = 2,
-			BATCHSIZE = 100000,
-			MAXERRORS = 10,
-			TABLOCK
+		BULK INSERT dbo.scr_risco_credito
+			FROM 'C:\Users\Pedro\Desktop\ESTUDOS\ANALISE_DADOS\PROJETOS\PROJETO_RISCO_CREDITO\data\gold\dados_limpos.csv'
+			WITH
+			(
+				FORMAT = 'CSV',
+				FIELDTERMINATOR = ';',
+				CODEPAGE = '65001',
+				FIRSTROW = 1,
+				BATCHSIZE = 100000,
+				MAXERRORS = 100,
+				ERRORFILE = 'C:\sisampla\erros_scr.csv'
 			);
 
 		SET @tempo_final = GETDATE();
@@ -74,3 +67,4 @@ BEGIN
 END;
 
 exec dbo.sp_inserir_dados
+
