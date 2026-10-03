@@ -2,82 +2,160 @@ USE RiscoCredito;
 
 --------------------------------------- dim_uf ---------------------------------
 
-IF OBJECT_ID('dim_uf','V') IS NOT NULL
-	DROP VIEW dim_uf;
-GO
+DROP TABLE IF EXISTS dim_uf;
 
-CREATE OR ALTER VIEW dim_uf AS
-	SELECT DISTINCT uf FROM dbo.scr_risco_credito;
+CREATE TABLE dim_uf
+(
+	uf_id INT NOT NULL,
+	uf NVARCHAR(2)
+)
+
+INSERT INTO dim_uf
+SELECT 
+	ROW_NUMBER() OVER (ORDER BY uf) as uf_id,
+	uf.uf
+FROM (SELECT DISTINCT uf FROM dbo.scr_risco_credito) as uf
+
+SELECT * FROM dim_uf
 
 --------------------------------------- dim_segmento ---------------------------------
 
-IF OBJECT_ID('dim_segmento','V') IS NOT NULL
-	DROP VIEW dim_segmento;
-GO
+DROP TABLE IF EXISTS dim_segmento;
 
-CREATE OR ALTER VIEW dim_segmento AS
-	SELECT DISTINCT segmento FROM dbo.scr_risco_credito;
+CREATE TABLE dim_segmento
+(
+	segmento_id INT NOT NULL,
+	segmento NVARCHAR(100)
+)
+
+INSERT INTO dim_segmento
+SELECT 
+	ROW_NUMBER() OVER(ORDER BY segmento) as segmento_id,
+	segmento
+FROM (SELECT DISTINCT segmento FROM dbo.scr_risco_credito) as seg
+
+SELECT * FROM dim_segmento
 
 --------------------------------------- dim_cliente ---------------------------------
 
-IF OBJECT_ID('dim_cliente', 'V') IS NOT NULL
-	DROP VIEW dim_cliente;
-GO
+DROP TABLE IF EXISTS dim_cliente;
 
-CREATE OR ALTER VIEW dim_cliente AS
-	SELECT DISTINCT cliente FROM dbo.scr_risco_credito
+CREATE TABLE dim_cliente
+(
+	cliente_id INT NOT NULL,
+	cliente NVARCHAR(2)
+)
+
+INSERT INTO dim_cliente
+SELECT 
+	ROW_NUMBER() OVER(ORDER BY cliente) as cliente_id,
+	cliente
+FROM (SELECT DISTINCT cliente FROM dbo.scr_risco_credito) as c
+
+SELECT * FROM dim_cliente
 
 --------------------------------------- dim_cnae_ocupacao ---------------------------------
 
-IF OBJECT_ID('dim_cnae_ocupacao', 'V') IS NOT NULL
-	DROP VIEW dim_cnae_ocupacao;
-GO
+DROP TABLE IF EXISTS dim_cnae_ocupacao;
 
-CREATE OR ALTER VIEW dim_cnae_ocupacao AS 
-	SELECT DISTINCT cnae_ocupacao FROM dbo.scr_risco_credito
+CREATE TABLE dim_cnae_ocupacao
+(
+	cnae_ocupacao_id INT NOT NULL,
+	cnae_ocupacao NVARCHAR(100)
+)
 
+INSERT INTO dim_cnae_ocupacao
+SELECT 
+	ROW_NUMBER() OVER(ORDER BY cnae_ocupacao) as cnae_ocupacao_id,
+	cnae_ocupacao
+FROM (SELECT DISTINCT cnae_ocupacao FROM dbo.scr_risco_credito) as co
+
+SELECT * FROM dim_cnae_ocupacao
 --------------------------------------- dim_porte ---------------------------------
 
-IF OBJECT_ID ('dim_porte', 'V') IS NOT NULL
-	DROP VIEW dim_porte;
-GO
+DROP TABLE IF EXISTS dim_porte;
 
-CREATE OR ALTER VIEW dim_porte AS
-	SELECT DISTINCT porte FROM dbo.scr_risco_credito
+CREATE TABLE dim_porte
+(
+	porte_id INT NOT NULL,
+	porte NVARCHAR(100)
+)
+
+INSERT INTO dim_porte
+SELECT 
+	ROW_NUMBER () OVER(ORDER BY porte) as porte_id,
+	p.porte 
+FROM (SELECT DISTINCT porte FROM DBO.scr_risco_credito) as p
+
+SELECT * FROM dim_porte
 
 --------------------------------------- dim_modalidade ---------------------------------
+DROP TABLE IF EXISTS dim_modalidade;
 
-IF OBJECT_ID ('dim_modalidade', 'V') IS NOT NULL
-	DROP VIEW dim_modalidade;
-GO
+CREATE TABLE dim_modalidade
+(
+	modalidade_id INT NOT NULL,
+	modalidade NVARCHAR(100)
+)
 
-CREATE OR ALTER VIEW dim_modalidade AS
-	SELECT DISTINCT modalidade FROM dbo.scr_risco_credito
+INSERT INTO dim_modalidade
+SELECT 
+	ROW_NUMBER() OVER(ORDER BY modalidade) as modalidade_id,
+	modalidade
+FROM (SELECT DISTINCT modalidade FROM dbo.scr_risco_credito) as m
+
+SELECT * FROM dim_modalidade
 
 --------------------------------------- dim_submodalidade ---------------------------------
 
-IF OBJECT_ID ('dim_submodalidade', 'V') IS NOT NULL
-	DROP VIEW dim_submodalidade;
-GO
+DROP TABLE IF EXISTS dim_submodalidade;
 
-CREATE OR ALTER VIEW dim_submodalidade AS
-	SELECT DISTINCT submodalidade FROM dbo.scr_risco_credito
+CREATE TABLE dim_submodalidade
+(
+	submodalidade_id INT NOT NULL,
+	submodalidade NVARCHAR(160)
+)
+
+INSERT INTO dim_submodalidade
+SELECT 
+	ROW_NUMBER() OVER(ORDER BY submodalidade) as submodalidade_id,
+	submodalidade
+FROM (SELECT DISTINCT submodalidade FROM dbo.scr_risco_credito) as sm
+
+SELECT * FROM dim_submodalidade
 
 --------------------------------------- dim_origem ---------------------------------
 
-IF OBJECT_ID ('dim_origem', 'V') IS NOT NULL
-	DROP VIEW dim_origem;
-GO
+DROP TABLE IF EXISTS dim_origem;
 
-CREATE OR ALTER VIEW dim_origem AS
-	SELECT DISTINCT origem FROM dbo.scr_risco_credito
+CREATE TABLE dim_origem
+(
+	origem_id INT NOT NULL,
+	origem NVARCHAR(160)
+)
+
+INSERT INTO dim_origem
+SELECT 
+	ROW_NUMBER() OVER(ORDER BY origem) as origem_id,
+	origem
+FROM (SELECT DISTINCT origem FROM dbo.scr_risco_credito) as o
+
+SELECT * FROM dim_origem
 
 --------------------------------------- dim_indexador ---------------------------------
 
-IF OBJECT_ID ('dim_indexador', 'V') IS NOT NULL
-	DROP VIEW dim_indexador;
-GO
+DROP TABLE IF EXISTS dim_indexador;
 
-CREATE OR ALTER VIEW dim_indexador AS
-	SELECT DISTINCT indexador FROM dbo.scr_risco_credito
+CREATE TABLE dim_indexador
+(
+	indexador_id INT NOT NULL,
+	indexador NVARCHAR(100)
+)
 
+INSERT INTO dim_indexador
+SELECT 
+	ROW_NUMBER() OVER(ORDER BY indexador) as indexador_id,
+	indexador
+FROM (SELECT DISTINCT indexador FROM dbo.scr_risco_credito) as i
+
+SELECT * FROM dim_indexador

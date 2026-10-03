@@ -1,4 +1,4 @@
-exec dbo.sp_inserir_dados
+USE RiscoCredito;
 
 IF OBJECT_ID('scr_risco_credito', 'U') IS NOT NULL
 	DROP TABLE scr_risco_credito;
