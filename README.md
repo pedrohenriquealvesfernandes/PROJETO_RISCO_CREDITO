@@ -9,9 +9,7 @@
 ---
 ## Apresentação do Dashboard
 
-<div style="text-align: center; display: inline-block; border: 2px solid #000; padding: 5px;">
-  ![Dashboard Análise de Risco de Crédito](https://github.com/pedrohenriquealvesfernandes/PROJETO_RISCO_CREDITO/blob/main/img/Insights.jpg)
-</div>   
+![Dashboard Análise de Risco de Crédito](https://github.com/pedrohenriquealvesfernandes/PROJETO_RISCO_CREDITO/blob/main/img/Insights.jpg)  
 
 ---
 
