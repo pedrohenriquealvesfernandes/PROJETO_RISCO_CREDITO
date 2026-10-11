@@ -9,6 +9,8 @@ src/bronze/__pycache__
 src/projeto_risco_credito
 *.csv
 *.rar
+*.pbix
+powerbi/
 
 #Arquivos de config
 uv.lock
