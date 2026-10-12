@@ -1,7 +1,7 @@
 # 💳 Análise de Risco de Crédito - SCR
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-pedrohalves-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/pedrohalves/)
-[![GitHub](https://img.shields.io/badge/GitHub-pedrohenriquealvesfernandes-000?style=flat&logo=GitHub)](https://github.com/pedrohenriquealvesfernandes)
+[![GitHub](https://img.shields.io/badge/GitHub-pedrohenriquealvesfernandes-ff7300?style=flat&logo=GitHub)](https://github.com/pedrohenriquealvesfernandes)
 
 
 > Projeto de ETL para coleta, transformação e análise dos dados das operações de crédito referentes a 2025, disponibilizados pelo Banco Central do Brasil por meio do Sistema de Informações de Créditos (SCR).
@@ -210,6 +210,6 @@ Os arquivos .csv gerados pela extração são salvos na pasta data/bronze/arquiv
 
 [![Instagram](https://img.shields.io/badge/Instagram-@ppedro_halvess-E4405F?style=flat&logo=instagram)](https://www.instagram.com/ppedro_halvess)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-pedrohalves-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/pedrohalves/)
-[![GitHub](https://img.shields.io/badge/GitHub-pedrohenriquealvesfernandes-000?style=flat&logo=GitHub)](https://github.com/pedrohenriquealvesfernandes)
+[![GitHub](https://img.shields.io/badge/GitHub-pedrohenriquealvesfernandes-ff7300?style=flat&logo=GitHub)](https://github.com/pedrohenriquealvesfernandes)
 
 
