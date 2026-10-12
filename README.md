@@ -4,7 +4,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-pedrohenriquealvesfernandes-ff7300?style=flat&logo=GitHub)](https://github.com/pedrohenriquealvesfernandes)
 
 
-> Projeto de ETL para coleta, transformação e análise dos dados das operações de crédito referentes a 2025, disponibilizados pelo Banco Central do Brasil por meio do Sistema de Informações de Créditos (SCR).
+> Projeto de ETL e análise de dados das operações de crédito referentes a 2025, disponibilizados pelo Banco Central do Brasil por meio do Sistema de Informações de Créditos (SCR).
 
 ---
 ## Aparência do Dashboard
