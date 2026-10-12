@@ -177,7 +177,7 @@ Os arquivos .csv gerados pela extração são salvos na pasta data/bronze/arquiv
  - Utilização de INNER JOIN para junção e criação de ID das categorias para inserir na tabela fato.
 
  #### 3.5 **Validação das tabelas**
-- Vericação de valores nulos ou duplicados.
+- Verificação de valores nulos ou duplicados.
 - Verificação do total de registros.
 
 ---
